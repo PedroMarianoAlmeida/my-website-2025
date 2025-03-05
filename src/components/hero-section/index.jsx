@@ -10,7 +10,7 @@ export const HeroSection = () => {
         className="flex w-full md:w-auto"
       />
       <TrueFocus
-        sentences={["From LATAM", "to the World"]}
+        sentences={["From Latam", "to the World"]}
         manualMode={false}
         blurAmount={10}
         borderColor="#305979"

@@ -80,6 +80,18 @@ export const stackArray = [
     />,
   ],
   [
+    "G",
+    "i",
+    "t",
+    <Image
+      src="/stack/git.svg"
+      width={25}
+      height={25}
+      alt="Git logo"
+      className="h-full mx-1"
+    />,
+  ],
+  [
     "C",
     "S",
     "S",
@@ -131,5 +143,4 @@ export const stackArray = [
       className="h-full mx-1"
     />,
   ],
-  "And more ...",
 ];
