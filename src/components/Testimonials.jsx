@@ -83,7 +83,7 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="w-full mt-20">
+    <section className="w-full mt-20 hidden md:block">
       <h2 className="text-center text-5xl">Testimonials</h2>
       <InfiniteMenu items={testimonials} />
     </section>

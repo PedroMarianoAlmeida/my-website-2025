@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { mat4, quat, vec2, vec3 } from "gl-matrix";
+import Link from "next/link";
 
 const discVertShaderSource = `#version 300 es
 
@@ -1173,8 +1174,7 @@ export default function InfiniteMenu({ items = [] }) {
 
       {activeItem && (
         <>
-          {/* Title */}
-          <h2
+          <div
             className={`
                w-1/3
             select-none
@@ -1187,6 +1187,10 @@ export default function InfiniteMenu({ items = [] }) {
             transition-all
             ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
              transform -translate-y-1/2
+             flex
+             flex-col
+             gap-3
+             items-center
             ${
               isMoving
                 ? "opacity-0 pointer-events-none duration-[100ms]"
@@ -1194,8 +1198,37 @@ export default function InfiniteMenu({ items = [] }) {
             }
           `}
           >
-            {activeItem.title}
-          </h2>
+            <h2>{activeItem.title}</h2>
+            <Link
+              href={activeItem.link}
+              target="__blank"
+              rel="noopener noreferrer"
+              className={`
+              -translate-x-1/2
+              z-10
+              w-[60px]
+              h-[60px]
+              grid
+              place-items-center
+              bg-[#00ffff]
+              border-[5px]
+              border-black
+              rounded-full
+              cursor-pointer
+              transition-all
+              ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+              ${
+                isMoving
+                  ? "opacity-0 pointer-events-none duration-[100ms] scale-0"
+                  : "opacity-100 pointer-events-auto duration-[500ms] scale-100"
+              }
+            `}
+            >
+              <p className="select-none relative text-[#060606] top-[2px] text-[26px]">
+                &#x2197;
+              </p>
+            </Link>
+          </div>
 
           {/* Description */}
           <p
@@ -1221,39 +1254,6 @@ export default function InfiniteMenu({ items = [] }) {
           >
             {activeItem.description}
           </p>
-
-          {/* Action Button */}
-          <div
-            onClick={handleButtonClick}
-            className={`
-              absolute
-              top-0
-              left-1/2
-              mt-40
-              -translate-x-1/2
-              z-10
-              w-[60px]
-              h-[60px]
-              grid
-              place-items-center
-              bg-[#00ffff]
-              border-[5px]
-              border-black
-              rounded-full
-              cursor-pointer
-              transition-all
-              ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-              ${
-                isMoving
-                  ? "opacity-0 pointer-events-none duration-[100ms] scale-0"
-                  : "opacity-100 pointer-events-auto duration-[500ms] scale-100"
-              }
-            `}
-          >
-            <p className="select-none relative text-[#060606] top-[2px] text-[26px]">
-              &#x2197;
-            </p>
-          </div>
         </>
       )}
     </div>
