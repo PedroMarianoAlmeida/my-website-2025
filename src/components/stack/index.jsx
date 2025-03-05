@@ -6,11 +6,7 @@ export const Stack = () => {
     <section className="flex gap-2 items-center text-2xl container justify-center py-5 flex-col">
       <div className="flex flex-col md:flex-row items-center gap-5">
         <div className="text-center">
-          I am{" "}
-          <b className="font-mono">
-            {"<"}Pedro Almeida{"/>"}
-          </b>
-          , and I work with{" "}
+          I am <b className="font-mono">Pedro Almeida</b>, and I work with{" "}
         </div>
 
         <RotatingText

@@ -71,6 +71,7 @@ in float vAlpha;
 flat in int vInstanceId;
 
 void main() {
+
     // Calculate which item to display based on instance ID
     int itemIndex = vInstanceId % uItemCount;
     int cellsPerRow = uAtlasSize;
@@ -602,7 +603,7 @@ class ArcballControl {
     );
     quat.normalize(this._combinedQuat, this._combinedQuat);
 
-    const rad = Math.acos(this._combinedQuat[3]) * 2.0;
+    const rad = Math.acos(this._combinedQuat[3]) * 3.0;
     const s = Math.sin(rad / 2.0);
     let rv = 0;
     if (s > 0.000001) {
@@ -652,7 +653,7 @@ class ArcballControl {
 
 class InfiniteGridMenu {
   TARGET_FRAME_DURATION = 1000 / 60; // 60 fps
-  SPHERE_RADIUS = 2;
+  SPHERE_RADIUS = 1.5;
 
   #time = 0;
   #deltaTime = 0;
@@ -914,8 +915,8 @@ class InfiniteGridMenu {
     let positions = this.instancePositions.map((p) =>
       vec3.transformQuat(vec3.create(), p, this.control.orientation)
     );
-    const scale = 0.15;
-    const SCALE_INTENSITY = 0.5;
+    const scale = 0.1;
+    const SCALE_INTENSITY = 0;
     positions.forEach((p, ndx) => {
       const s =
         (Math.abs(p[2]) / this.SPHERE_RADIUS) * SCALE_INTENSITY +
@@ -940,7 +941,7 @@ class InfiniteGridMenu {
       mat4.multiply(
         matrix,
         matrix,
-        mat4.fromTranslation(mat4.create(), [0, 0, -this.SPHERE_RADIUS])
+        mat4.fromTranslation(mat4.create(), [0, 0, -this.SPHERE_RADIUS * 4])
       );
 
       mat4.copy(this.discInstances.matrices[ndx], matrix);
@@ -1155,15 +1156,6 @@ export default function InfiniteMenu({ items = [] }) {
     };
   }, [items]);
 
-  const handleButtonClick = () => {
-    if (!activeItem?.link) return;
-    if (activeItem.link.startsWith("http")) {
-      window.open(activeItem.link, "_blank");
-    } else {
-      console.log("Internal route:", activeItem.link);
-    }
-  };
-
   return (
     <div className="relative w-full h-full">
       <canvas
@@ -1198,7 +1190,7 @@ export default function InfiniteMenu({ items = [] }) {
             }
           `}
           >
-            <h2>{activeItem.title}</h2>
+            <h2 className="bg-black">{activeItem.title}</h2>
             <Link
               href={activeItem.link}
               target="__blank"
@@ -1245,6 +1237,7 @@ export default function InfiniteMenu({ items = [] }) {
               ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
               text-center
               p-4 rounded-lg shadow
+              bg-black
               ${
                 isMoving
                   ? "opacity-0 pointer-events-none duration-[100ms]"
