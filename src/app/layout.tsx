@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Particles } from "@/components/Particles";
+import { Particles } from "@/components/react-bites/Particles";
 import "./globals.css";
 
 const geistSans = Geist({

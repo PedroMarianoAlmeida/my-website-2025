@@ -52,13 +52,13 @@ function getFresnelMat({ rimHex = 0x0088ff, facingHex = 0x000000 } = {}) {
   return fresnelMat;
 }
 
-export const EarthScene = ({ size }) => {
+export const EarthScene = ({ size = 500, spinSpeed = 0.002, className }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    camera.position.z = 5;
+    camera.position.z = 1.8;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(size, size);
@@ -127,10 +127,10 @@ export const EarthScene = ({ size }) => {
       frameId = requestAnimationFrame(animate);
 
       // Rotate meshes
-      earthMesh.rotation.y += 0.002;
-      lightsMesh.rotation.y += 0.002;
-      cloudsMesh.rotation.y += 0.0023;
-      glowMesh.rotation.y += 0.002;
+      earthMesh.rotation.y += spinSpeed;
+      lightsMesh.rotation.y += spinSpeed;
+      cloudsMesh.rotation.y += spinSpeed * 1.15;
+      glowMesh.rotation.y += spinSpeed;
 
       renderer.render(scene, camera);
     };
@@ -147,5 +147,5 @@ export const EarthScene = ({ size }) => {
     };
   }, []);
 
-  return <div ref={containerRef} />;
+  return <div ref={containerRef} className={className} />;
 };
