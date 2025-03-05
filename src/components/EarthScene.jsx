@@ -52,11 +52,10 @@ function getFresnelMat({ rimHex = 0x0088ff, facingHex = 0x000000 } = {}) {
   return fresnelMat;
 }
 
-export const EarthScene = () => {
+export const EarthScene = ({ size }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const size = 500;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     camera.position.z = 5;
