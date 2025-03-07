@@ -29,6 +29,9 @@ export interface RotatingTextProps
   > {
   texts: (string | React.ReactNode[])[];
   transition?: Transition;
+  initial?: any;
+  animate?: any;
+  exit?: any;
   animatePresenceMode?: "sync" | "wait";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;
@@ -48,6 +51,9 @@ export const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
     {
       texts,
       transition = { type: "spring", damping: 25, stiffness: 300 },
+      initial = { y: "100%", opacity: 0 },
+      animate = { y: 0, opacity: 1 },
+      exit = { y: "-120%", opacity: 0 },
       animatePresenceMode = "wait",
       animatePresenceInitial = false,
       rotationInterval = 2000,
@@ -248,9 +254,9 @@ export const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
                   {wordObj.characters.map((char, charIndex) => (
                     <motion.span
                       key={charIndex}
-                      initial={{ y: "100%", opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: "-120%", opacity: 0 }}
+                      initial={initial}
+                      animate={animate}
+                      exit={exit}
                       transition={{
                         ...transition,
                         delay: getStaggerDelay(
