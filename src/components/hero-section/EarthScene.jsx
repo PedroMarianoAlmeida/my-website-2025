@@ -147,5 +147,11 @@ export const EarthScene = ({ size = 500, spinSpeed = 0.002, className }) => {
     };
   }, []);
 
-  return <div ref={containerRef} className={className} />;
+  return (
+    <div
+      ref={containerRef}
+      className={className}
+      style={{ width: size, height: size }}
+    />
+  );
 };
