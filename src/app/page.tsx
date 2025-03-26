@@ -6,11 +6,13 @@ import { History } from "@/components/history";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <HeroSection />
-      <Stack />
+    <div className="flex flex-col justify-center items-center gap-20">
+      <div>
+        <HeroSection />
+        <Stack />
+        <Numbers />
+      </div>
       <History />
-      <Numbers />
       <Testimonials />
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
     </div>
