@@ -1,18 +1,11 @@
 import Image from "next/image";
-import { ExternalLink, Briefcase, Calendar, Code } from "lucide-react";
-import Link from "next/link";
-import { ShinyText } from "@/components/react-bites/ShinyText";
 import { Badge } from "@/components/ui/badge";
 
 import { type IHistory } from "./index";
 
 export const Summary = ({
   companyName,
-  endDate,
   flag,
-  jobTitle,
-  startDate,
-  companyUrl,
   companyLogo,
   techStack,
 }: Pick<
@@ -39,12 +32,15 @@ export const Summary = ({
         </div>
         <div>
           <div className="text-xl hover:underline">{companyName}</div>
-          <div className="flex items-center gap-1 mt-1">
-            {techStack.map((el, index) => (
-              // <Badge key={el} variant="secondary">
-                <ShinyText key={el} text={el} />
-              // </Badge>
+          <div className="flex items-center gap-1 mt-1 flex-wrap">
+            {techStack.slice(0, 3).map((el) => (
+              <Badge variant="secondary" key={el} className="rounded-4xl">
+                {el}
+              </Badge>
             ))}
+            <Badge variant="secondary" className="rounded-4xl">
+              ... and more
+            </Badge>
           </div>
         </div>
       </div>
