@@ -63,7 +63,12 @@ export const History = () => {
     <section className="container">
       <h2 className="text-center text-5xl">History</h2>
 
-      <Accordion type="single" collapsible className="">
+      <Accordion
+        type="single"
+        collapsible
+        className=""
+        defaultValue={history[0].companyName}
+      >
         {history.map(
           ({
             companyName,
@@ -73,6 +78,7 @@ export const History = () => {
             jobTitle,
             startDate,
             companyLogo,
+            techStack
           }) => (
             <AccordionItem value={companyName} key={companyName}>
               <AccordionTrigger className="text-xl hover:no-underline">
@@ -84,6 +90,7 @@ export const History = () => {
                   jobTitle={jobTitle}
                   startDate={startDate}
                   companyLogo={companyLogo}
+                  techStack={techStack}
                 />
               </AccordionTrigger>
               <AccordionContent>
