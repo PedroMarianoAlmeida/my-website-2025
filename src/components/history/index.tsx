@@ -14,6 +14,7 @@ export interface IHistory {
   endDate: string;
   companyUrl: string;
   companyLogo: string;
+  techStack: string[];
 }
 const history: IHistory[] = [
   {
@@ -24,6 +25,36 @@ const history: IHistory[] = [
     endDate: "Present",
     companyUrl: "https://www.linkedin.com/company/solutions-medias-360/",
     companyLogo: "/history/sm360.jpeg",
+    techStack: [
+      "React",
+      "JavaScript",
+      "Scss",
+      "JSP",
+      "Jira",
+      "Agile Methods",
+      "Support",
+    ],
+  },
+  {
+    companyName: "Moz (contractor)",
+    flag: "🇺🇸",
+    jobTitle: "Software Engineer (Frontend)",
+    startDate: "Ago 2023",
+    endDate: "Feb 2024",
+    companyUrl: "https://www.linkedin.com/company/moz",
+    companyLogo: "/history/moz.jpeg",
+    techStack: [
+      "NextJs",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "MUI",
+      "Node",
+      "tRPC",
+      "Jira",
+      "Agile Methods",
+      "Stripe",
+    ],
   },
 ];
 
@@ -43,7 +74,7 @@ export const History = () => {
             startDate,
             companyLogo,
           }) => (
-            <AccordionItem value="item-1" key={companyName}>
+            <AccordionItem value={companyName} key={companyName}>
               <AccordionTrigger className="text-xl hover:no-underline">
                 <Summary
                   companyName={companyName}
