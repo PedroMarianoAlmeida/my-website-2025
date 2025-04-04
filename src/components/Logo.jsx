@@ -7,8 +7,8 @@ export const Logo = () => {
       target="__blank"
       rel="noopener noreferrer"
     >
-      <div className="w-full fixed top-0 md:top-4 left-1/2 -translate-x-1/2 flex md:justify-start justify-center items-center h-8">
-        <div className="w-72 h-8 bg-black flex justify-center items-center">
+      <div className="w-full fixed top-0 md:top-4 left-1/2 -translate-x-1/2 flex md:justify-start justify-center items-center h-8 z-10">
+        <div className="w-72 h-8 flex justify-center items-center bg-primary/30">
           <FuzzyText
             enableHover={false}
             baseIntensity={1.5}
