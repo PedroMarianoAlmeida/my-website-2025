@@ -9,6 +9,7 @@ export interface IHistory {
   companySummary: string;
   jobSummary: string;
   activities: string[];
+  isActive: boolean;
 }
 export const history: IHistory[] = [
   {
@@ -39,6 +40,7 @@ export const history: IHistory[] = [
       "Delivered efficient technical support for legacy JSP projects, enhancing user satisfaction",
       "Worked on support tasks (fixing bugs) in several products that required solving things with different stakeholders (like clients, Product Owners, different dev teams, etc)",
     ],
+    isActive: true,
   },
   {
     companyName: "Moz (contractor)",
@@ -71,6 +73,7 @@ export const history: IHistory[] = [
       "Implemented features in a Node + tRPC backend that serves the frontend project",
       "Learned Twig (a PHP framework) due to the company's necessity and help in this area",
     ],
+    isActive: false,
   },
   {
     companyName: "Fetchly Labs",
@@ -104,6 +107,7 @@ export const history: IHistory[] = [
       "Built over 4 MVPs with React, React Native, and Ruby on Rails",
       "Worked as an outsourcer refactoring a React Native app in production (with TDD Methodology)",
     ],
+    isActive: false,
   },
   {
     companyName: "Mondiale",
@@ -133,5 +137,41 @@ export const history: IHistory[] = [
       "Validate the changes with the Product Owner and the code with the Tech Lead (scrum)",
       "Refactor React component",
     ],
+    isActive: false,
+  },
+  {
+    companyName: "Pedro Programmer",
+    flag: "🌎",
+    jobTitle: "Owner/FullStack Developer",
+    startDate: "Jan 2018",
+    endDate: "Present",
+    companyLogo: "/history/pedroprogrammer.png",
+    techStack: [
+      "Open Source",
+      "AWS",
+      "AI",
+      "Micro SaaS",
+      "NextJs",
+      "React",
+      "MongoDb",
+      "JavaScript",
+      "TypeScript",
+      "Scss",
+      "Styled Components",
+      "Theme UI",
+      "HTML + CSS",
+      "Jira",
+      "Agile Methods",
+    ],
+    companySummary: "Pedro Programmer is my ",
+    jobSummary: "Maintenance in over 20 Landing  with different stacks",
+    activities: [
+      "Open source contributions for React Bits (10k stars), and Meteor",
+      "Created a React framework after the release of React 19",
+      "Created a AI Micro SaaS: Better Image IA (shut down due to costs)",
+      "Freelancer projects into NDA contract",
+      "Helped a lot of developers (check testimonials)",
+    ],
+    isActive: true,
   },
 ];

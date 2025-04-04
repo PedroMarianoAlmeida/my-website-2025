@@ -8,6 +8,7 @@ export const Summary = ({
   flag,
   companyLogo,
   techStack,
+  isActive,
 }: IHistory) => {
   return (
     <div className="flex justify-between w-full items-center px-2">
@@ -21,7 +22,10 @@ export const Summary = ({
           />
         </div>
         <div>
-          <div className="text-xl hover:underline">{companyName}</div>
+          <div className="flex gap-2">
+            {companyName} {isActive && "🟢"}
+          </div>
+
           <div className="flex items-center gap-1 mt-1 flex-wrap">
             {techStack.slice(0, 3).map((el) => (
               <Badge variant="secondary" key={el} className="rounded-4xl">
