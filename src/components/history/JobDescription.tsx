@@ -1,5 +1,5 @@
 import { type IHistory } from "./historyData";
-import { ExternalLink, Briefcase, Calendar, Code } from "lucide-react";
+import { Briefcase, Calendar } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 
