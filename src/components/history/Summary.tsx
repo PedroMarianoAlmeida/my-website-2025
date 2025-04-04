@@ -1,24 +1,14 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
-import { type IHistory } from "./index";
+import { type IHistory } from "./historyData";
 
 export const Summary = ({
   companyName,
   flag,
   companyLogo,
   techStack,
-}: Pick<
-  IHistory,
-  | "companyName"
-  | "jobTitle"
-  | "endDate"
-  | "flag"
-  | "startDate"
-  | "companyUrl"
-  | "companyLogo"
-  | "techStack"
->) => {
+}: IHistory) => {
   return (
     <div className="flex justify-between w-full items-center px-2">
       <div className="flex items-center gap-4">
