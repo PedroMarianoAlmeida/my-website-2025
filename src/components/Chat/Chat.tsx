@@ -56,7 +56,7 @@ export const Chat = () => {
     <>
       <Card className="w-full max-w-3xl h-[80vh]">
         <CardHeader className="border-b">
-          <CardTitle className="text-xl">Questions about the book?</CardTitle>
+          <CardTitle className="text-xl">Questions about my career?</CardTitle>
         </CardHeader>
 
         <ScrollArea className="h-[calc(80vh-8rem)]">
