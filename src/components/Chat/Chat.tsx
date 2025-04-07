@@ -123,15 +123,22 @@ export const Chat = () => {
 
                     <div className="rounded-lg p-3 whitespace-pre-line bg-muted">
                       {error && (
-                        <div className="flex gap-2">
-                          <div>An error occurred.</div>
-                          <Button
-                            type="button"
-                            variant="destructive"
-                            onClick={() => reload()}
-                          >
-                            Retry
-                          </Button>
+                        <div className="flex gap-2 items-center">
+                          <div>
+                            {error.message.includes("Invalid question")
+                              ? "This is not a question about professional career or expertize, try another question"
+                              : "An error occurred."}
+                          </div>
+
+                          {!error.message.includes("Invalid question") && (
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              onClick={() => reload()}
+                            >
+                              Retry
+                            </Button>
+                          )}
                         </div>
                       )}
 
