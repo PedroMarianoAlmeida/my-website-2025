@@ -44,8 +44,8 @@ export const Chat = () => {
           <CardTitle className="text-xl">Questions about my career?</CardTitle>
         </CardHeader>
 
-        <ScrollArea className="h-[calc(80vh-8rem)]">
-          <CardContent className="p-4">
+        <CardContent className="p-4 h-110">
+          <ScrollArea className="h-full">
             <div className="space-y-4">
               {messages.map((message) => {
                 const messageTreated =
@@ -135,10 +135,10 @@ export const Chat = () => {
                 </div>
               )}
             </div>
-          </CardContent>
-        </ScrollArea>
+          </ScrollArea>
+        </CardContent>
 
-        <CardFooter className="border-t p-4">
+        <CardFooter className="border-t p-4 h-20">
           <form className="flex w-full gap-2" onSubmit={handleSubmit}>
             <Input
               placeholder="Type your message..."

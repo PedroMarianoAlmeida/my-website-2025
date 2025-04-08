@@ -13,7 +13,6 @@ interface SaveChat {
 export const saveChat = ({ id, messages }: SaveChat) => {
   return asyncWrapper(async () => {
     const chatDocRef = doc(chatsRef, String(id));
-    console.log({ messages });
     // Use setDoc with merge:true to update the document if it exists or create a new one if it doesn't.
     await setDoc(
       chatDocRef,
