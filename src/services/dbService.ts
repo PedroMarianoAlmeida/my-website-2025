@@ -16,16 +16,19 @@ export const saveChat = ({ id, messages }: SaveChat) => {
     const chatDocRef = doc(chatsRef, String(id));
     // Use setDoc with merge:true to update the document if it exists or create a new one if it doesn't.
     try {
-      console.log("Before call DB")
+      console.log("Before call DB");
       const res = await setDoc(
         chatDocRef,
         { messages: arrayUnion(...messages) },
         { merge: true }
       );
-      console.log("After call DB")
+      console.log("After call DB");
       console.log({ res });
     } catch (e) {
       console.log({ e });
+    } finally {
+      console.log("finally");
     }
+    console.log("last");
   });
 };
