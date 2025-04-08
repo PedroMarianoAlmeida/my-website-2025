@@ -3,6 +3,7 @@ import { Stack } from "@/components/stack/index";
 import { Numbers } from "@/components/Numbers";
 import { Testimonials } from "@/components/Testimonials";
 import { History } from "@/components/history";
+import { ChatCTA } from "@/components/Chat/ChatCTA";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       </div>
       <History />
       <Testimonials />
+      <ChatCTA />
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
     </div>
   );

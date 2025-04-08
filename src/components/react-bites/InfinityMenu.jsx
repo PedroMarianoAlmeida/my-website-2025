@@ -371,7 +371,6 @@ function createShader(gl, type, source) {
     return shader;
   }
 
-  console.error(gl.getShaderInfoLog(shader));
   gl.deleteShader(shader);
   return null;
 }
@@ -410,7 +409,6 @@ function createProgram(
     return program;
   }
 
-  console.error(gl.getProgramInfoLog(program));
   gl.deleteProgram(program);
   return null;
 }
