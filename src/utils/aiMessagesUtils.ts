@@ -69,3 +69,44 @@ export const getLastMessage = (messages: CoreMessage[]) => {
     throw Error("Not user message");
   return content;
 };
+
+export const extractThinkingAndRegularMessage = (str: string) => {
+  const openingTag = "think";
+  const closingTag = "think";
+
+  // Find the opening tag
+  const startIndex = str.indexOf(openingTag);
+  if (startIndex === -1) {
+    // If the opening tag doesn't exist, you can decide how to handle this case.
+    return { thinking: "", message: str };
+  }
+
+  // Calculate where the text inside <think> starts
+  const textStart = startIndex + openingTag.length;
+
+  // Look for the closing tag after the opening tag
+  const endIndex = str.indexOf(closingTag, textStart);
+
+  let thinking = "";
+  let message = "";
+
+  if (endIndex !== -1) {
+    // If the closing tag is found, extract the inner text as "thinking"
+    thinking = str.substring(textStart, endIndex);
+    // And everything after the closing tag as "message"
+    message = str.substring(endIndex + closingTag.length);
+  } else {
+    // If no closing tag is found, take all the content after the opening tag as "thinking"
+    thinking = str.substring(textStart);
+  }
+
+  // Optionally trim extra whitespace from the results
+  return {
+    thinking: thinking.trim(),
+    message: message.trim(),
+  };
+};
+
+// Example usage:
+const case1 = "<think>TEXT 1</think>TEXT 2";
+const case2 = "<think>Text";

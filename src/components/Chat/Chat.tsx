@@ -14,7 +14,10 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Ellipsis, UserRound } from "lucide-react";
 
-import { messageParsed } from "@/utils/aiMessagesUtils";
+import {
+  messageParsed,
+  extractThinkingAndRegularMessage,
+} from "@/utils/aiMessagesUtils";
 
 export const Chat = () => {
   const [messageId, setMessageId] = useState<string | null>(null);
@@ -53,10 +56,21 @@ export const Chat = () => {
           <ScrollArea className="h-full">
             <div className="space-y-4">
               {messages.map((message) => {
-                const messageTreated =
-                  message.role === "user"
-                    ? { isValid: true, content: message.content }
-                    : messageParsed(message.content);
+                let messageTreated: { isValid: boolean; content: string };
+                if (message.role === "user")
+                  messageTreated = { isValid: true, content: message.content };
+                else {
+                  const messageWithThinking = messageParsed(message.content);
+                  const { message: aiMessage, thinking } =
+                    extractThinkingAndRegularMessage(
+                      messageWithThinking.content
+                    );
+                  messageTreated = {
+                    isValid: true,
+                    content:
+                      aiMessage !== "" ? aiMessage : `Thinking: ${thinking}`,
+                  };
+                }
 
                 return (
                   <div
