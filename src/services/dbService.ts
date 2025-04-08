@@ -15,12 +15,14 @@ export const saveChat = ({ id, messages }: SaveChat) => {
   return asyncWrapper(async () => {
     const chatDocRef = doc(chatsRef, String(id));
     // Use setDoc with merge:true to update the document if it exists or create a new one if it doesn't.
-    const noRes = await setDoc(
-      chatDocRef,
-      { messages: arrayUnion(...messages) },
-      { merge: true }
-    );
-
-    console.log({ noRes });
+    try {
+      await setDoc(
+        chatDocRef,
+        { messages: arrayUnion(...messages) },
+        { merge: true }
+      );
+    } catch (e) {
+      console.log({ e });
+    }
   });
 };
