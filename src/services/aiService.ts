@@ -12,7 +12,7 @@ type CheckQuestion = z.infer<typeof checkQuestionSchema>;
 const checkQuestion = (question: string) => {
   return asyncWrapper(async () => {
     const res = await generateObject({
-      model: groq("llama3-8b-8192"),
+      model: groq("qwen-qwq-32b"),
       schema: checkQuestionSchema,
       system: validQuestionPrompt,
       prompt: question,
@@ -33,7 +33,7 @@ export const chatAi = async ({ messages }: { messages: CoreMessage[] }) => {
     }
 
     return streamText({
-      model: groq("llama3-8b-8192"),
+      model: groq("qwen-qwq-32b"),
       system: chatSystemPrompt,
       messages,
     });
