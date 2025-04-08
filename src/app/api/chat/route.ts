@@ -8,14 +8,6 @@ export async function POST(req: Request) {
   const { messages, messageId } = await req.json();
   const chat = await chatAi({ messages });
   if (!chat.success) {
-    if (chat.message === "Invalid question") {
-      const lastMessages = getLastUserMessages(messages);
-      const lastMessage = lastMessages[lastMessages.length - 1];
-      saveChat({
-        id: messageId,
-        messages: [`Invalid - ${lastMessage}`],
-      });
-    }
     return new Response(
       JSON.stringify({ error: chat.message || "Something went wrong" }),
       {
@@ -56,12 +48,13 @@ export async function POST(req: Request) {
     const fullResponse = new TextDecoder().decode(fullArray);
     const newUserMessages = getLastUserMessages(messages);
     const newSystemMessageTreated = messageParsed(fullResponse).content;
+    console.log("save chat");
     saveChat({
       id: messageId,
       messages: [...newUserMessages, newSystemMessageTreated],
     });
   })();
-
+  console.log("send stream");
   // Return the response using the client branch of the stream.
   return new Response(clientStream, {
     headers: { "Content-Type": "application/json" },
