@@ -40,7 +40,7 @@ export async function POST(req: Request) {
   // Consume the buffer stream in the background to accumulate all chunks.
   (async () => {
     const reader = bufferStream.getReader();
-    let chunks = [];
+    const chunks = [];
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;

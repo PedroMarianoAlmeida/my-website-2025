@@ -63,13 +63,6 @@ export const getLastUserMessages = (messages: CoreMessage[]): string[] => {
   return lastUserMessages;
 };
 
-export const getLastMessage = (messages: CoreMessage[]) => {
-  const { role, content } = messages[messages.length - 1];
-  if (role !== "user" || typeof content !== "string")
-    throw Error("Not user message");
-  return content;
-};
-
 export const extractThinkingAndRegularMessage = (str: string) => {
   const openingTag = "think";
   const closingTag = "think";
@@ -106,7 +99,3 @@ export const extractThinkingAndRegularMessage = (str: string) => {
     message: message.trim(),
   };
 };
-
-// Example usage:
-const case1 = "<think>TEXT 1</think>TEXT 2";
-const case2 = "<think>Text";
