@@ -22,17 +22,15 @@ const checkQuestion = (question: string) => {
   });
 };
 
-export const chatAboutTheBook = async ({
-  messages,
-}: {
-  messages: CoreMessage[];
-}) => {
+export const chatAi = async ({ messages }: { messages: CoreMessage[] }) => {
   return asyncWrapper(async () => {
     const lastMessage = getLastMessage(messages);
 
     const isValidQuestion = await checkQuestion(lastMessage);
     if (!isValidQuestion.success) throw Error("Error checking question");
-    if (!isValidQuestion.result) throw Error("Invalid question");
+    if (!isValidQuestion.result) {
+      throw Error("Invalid question");
+    }
 
     return streamText({
       model: groq("llama3-8b-8192"),
