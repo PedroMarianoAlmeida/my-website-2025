@@ -1,5 +1,5 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import {
   Card,
@@ -14,32 +14,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Ellipsis, UserRound } from "lucide-react";
 
-const messageParsed = (message: string) => {
-  const lines = message.split("\n");
-  const errorLine = lines.find((line) => line.startsWith("3:"));
-  if (errorLine)
-    return {
-      isValid: false,
-      content: errorLine.slice(2).replace(/[^\w\s.,!?'-]/g, ""),
-    };
-
-  const rawParts = lines
-    .filter((line) => line.startsWith("0:"))
-    .map((line) => line.slice(2)); // remove '0:'
-
-  const parsedParts = rawParts.map((part) => {
-    try {
-      return JSON.parse(part);
-    } catch {
-      return { isValid: false, content: "Error parsing the response" };
-    }
-  });
-  const fullText = parsedParts.join("");
-  const cleanText = fullText.replace(/[^\w\s.,!?'"-]/g, "");
-  return { isValid: true, content: cleanText };
-};
+import { messageParsed } from "@/utils/aiMessagesUtils";
 
 export const Chat = () => {
+  const [messageId, setMessageId] = useState<string | null>(null);
+
   const {
     messages,
     input,
@@ -50,7 +29,13 @@ export const Chat = () => {
     reload,
   } = useChat({
     streamProtocol: "text",
+    body: { messageId },
   });
+
+  useEffect(() => {
+    const now = new Date();
+    setMessageId(now.toString());
+  }, []);
 
   return (
     <>
