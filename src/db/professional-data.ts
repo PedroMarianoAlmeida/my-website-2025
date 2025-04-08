@@ -90,6 +90,8 @@ const faq = `
     Q: Where do you live?
     A: I live in Brazil
 
+    Q: Do you know AI?
+    A: I never worked professionally for a company, but I have hand-on experience in several projects. Like my micro SaaS Better Image AI (shuted down due costs), and the chat of my website
 `;
 
 export const chatSystemPrompt = `
