@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useChat } from "@ai-sdk/react";
 import {
   Card,
@@ -18,6 +18,7 @@ import { messageParsed } from "@/utils/aiMessagesUtils";
 
 export const Chat = () => {
   const [messageId, setMessageId] = useState<string | null>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   const {
     messages,
@@ -36,6 +37,10 @@ export const Chat = () => {
     const now = new Date();
     setMessageId(now.toString());
   }, []);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <>
@@ -134,6 +139,7 @@ export const Chat = () => {
                   </div>
                 </div>
               )}
+              <div ref={bottomRef} />
             </div>
           </ScrollArea>
         </CardContent>
