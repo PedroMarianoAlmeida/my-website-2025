@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserRound } from "lucide-react";
 
@@ -77,9 +77,12 @@ export const Chat = () => {
                           : "flex-row"
                       }`}
                     >
-                      <Avatar className="h-8 w-8">
+                      <Avatar className="h-14 w-14">
                         {message.role === "assistant" ? (
-                          <AvatarFallback>🤖</AvatarFallback>
+                          <>
+                            <AvatarImage src="/chat/profilePhoto.png"/>
+                            <AvatarFallback>🤖</AvatarFallback>
+                          </>
                         ) : (
                           <AvatarFallback>
                             <UserRound />
