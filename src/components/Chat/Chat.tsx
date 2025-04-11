@@ -61,14 +61,13 @@ export const Chat = () => {
                   messageTreated = { isValid: true, content: message.content };
                 else {
                   const messageWithThinking = messageParsed(message.content);
-                  const { message: aiMessage, thinking } =
+                  const { message: aiMessage } =
                     extractThinkingAndRegularMessage(
                       messageWithThinking.content
                     );
                   messageTreated = {
                     isValid: true,
-                    content:
-                      aiMessage !== "" ? aiMessage : `Thinking: ${thinking}`,
+                    content: aiMessage,
                   };
                 }
 
@@ -118,41 +117,6 @@ export const Chat = () => {
                   </div>
                 );
               })}
-              {(error || status === "submitted" || status === "streaming") && (
-                <div className="flex justify-start">
-                  <div className="flex gap-3 max-w-[80%] flex-row items-center">
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>🤖</AvatarFallback>
-                    </Avatar>
-
-                    <div className="rounded-lg p-3 whitespace-pre-line bg-muted">
-                      {error && (
-                        <div className="flex gap-2 items-center">
-                          <div>
-                            {error.message.includes("Invalid question")
-                              ? "This is not a question about professional career or expertize, try another question"
-                              : "An error occurred."}
-                          </div>
-
-                          {!error.message.includes("Invalid question") && (
-                            <Button
-                              type="button"
-                              variant="destructive"
-                              onClick={() => reload()}
-                            >
-                              Retry
-                            </Button>
-                          )}
-                        </div>
-                      )}
-
-                      {(status === "submitted" || status === "streaming") && (
-                        <div>{status === "submitted" && <Ellipsis />}</div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
               <div ref={bottomRef} />
             </div>
           </ScrollArea>
