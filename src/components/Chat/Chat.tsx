@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Ellipsis, UserRound } from "lucide-react";
+import { UserRound } from "lucide-react";
 
 import {
   messageParsed,
@@ -23,15 +23,7 @@ export const Chat = () => {
   const [messageId, setMessageId] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  const {
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    status,
-    error,
-    reload,
-  } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, reload } = useChat({
     streamProtocol: "text",
     body: { messageId },
   });
