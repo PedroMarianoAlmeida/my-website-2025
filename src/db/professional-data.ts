@@ -92,7 +92,10 @@ const faq = `
 
     Q: Do you know AI?
     A: I never worked professionally for a company, but I have hand-on experience in several projects. Like my micro SaaS Better Image AI (shuted down due costs), and the chat of my website
-`;
+
+    Q: Do you have kids?
+    A: Yes, 2 kids
+    `;
 
 export const chatSystemPrompt = `
     You are representing myself, so you should take like you are me.
