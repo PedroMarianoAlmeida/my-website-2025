@@ -156,15 +156,10 @@ export const history: IHistory[] = [
       "MongoDb",
       "JavaScript",
       "TypeScript",
-      "Scss",
-      "Styled Components",
-      "Theme UI",
-      "HTML + CSS",
-      "Jira",
-      "Agile Methods",
     ],
-    companySummary: "Pedro Programmer is my ",
-    jobSummary: "Maintenance in over 20 Landing  with different stacks",
+    companySummary:
+      "Pedro Programmer is my own Company where I developed hands on expertise in several areas that I do not got chance to dig deep on my daily job, like AI and AWS",
+    jobSummary: "Freelancer project and open source contributions",
     activities: [
       "Open source contributions for React Bits (10k stars), and Meteor",
       "Created a React framework after the release of React 19",
